@@ -10,6 +10,5 @@
 	<H1><a href="/">main</a></H1>
 	<H1><a href="/board/list">list</a></H1>
 	<H1><a href="/board/insert">insert</a></H1>
-	<H1><a href="/board/update?boardNo=${boardNo }">update</a></H1>
 </body>
 </html>

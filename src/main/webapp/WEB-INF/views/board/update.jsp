@@ -21,7 +21,7 @@
 		<label>내용</label>
 		<textarea name="content" required="required" rows="10" cols="10"></textarea><br>
 		<input name="fileName" value="미구현" hidden="">
-		<input name="boardNo" value="${boardNo }">
+		<input name="boardNo" value="${boardNo }" hidden="">
 		<button type="submit">글 작성</button>
 	</form>
 </body>

@@ -10,6 +10,11 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
+	
+	<form action="/board/search" method="post">
+		<input name="name">
+		<button type="submit">검색</button>
+	</form>
 	<table border="1">
 		<tr>
 			<th>no</th>
@@ -26,8 +31,18 @@
 				<td>${list.views }</td>
 				<fmt:formatDate value="${list.regDate }" pattern="yyyy-MM-dd" var="regDate"/>
 				<td>${regDate }</td>
+				<td><input type="button" onclick="location.href='/board/read?boardNo=${list.boardNo}'" value="조회"></td>
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<script type="text/javascript">
+		
+		function readBtn() {
+			
+			jQuery('#boardNo').val($boardNo);			
+		}
+	
+	</script>
 </body>
 </html>

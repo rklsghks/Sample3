@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -36,12 +38,30 @@ public class BoardController {
 	}
 
 //	select
-	@GetMapping(path = "list")
+	@RequestMapping(path = "list")
 	public String list(Model model) {
 
 		List<BoardVO> list = service.list();
 		model.addAttribute("boardList", list);
 
+		return "/board/list";
+	}
+	
+	@GetMapping(path="read")
+	public String read(Model model, int boardNo) {
+		
+		BoardVO vo = service.read(boardNo);
+		model.addAttribute("vo", vo);
+		
+		return "/board/read";
+	}
+	
+	@RequestMapping(path = "search")
+	public String search(Model model, BoardVO vo) {
+		
+		List<BoardVO> list = service.search(vo);
+		model.addAttribute("boardList", list);
+		
 		return "/board/list";
 	}
 	
@@ -55,17 +75,29 @@ public class BoardController {
 	}
 	
 	@PostMapping(path = "update")
-	public String update(BoardVO vo) {
+	public String update(RedirectAttributes redirect, BoardVO vo) {
 		
-		log.info(vo);
 		service.update(vo);
+		redirect.addAttribute("boardNo", vo.getBoardNo());
+		
+		return "redirect:/board/read";
+	}
+	
+//	delete
+	@GetMapping(path = "delete")
+	public String delete(int boardNo) {
+		
+		service.delete(boardNo);
 		
 		return "redirect:/board/list";
 	}
-	
-	
 
 }
+
+
+
+
+
 
 
 

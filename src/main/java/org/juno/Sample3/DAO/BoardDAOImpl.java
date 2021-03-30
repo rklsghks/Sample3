@@ -27,6 +27,20 @@ public class BoardDAOImpl implements BoardDAO {
 		 	
 		return sqlSession.selectList(nameSpace + ".list");
 	}
+	
+	@Override
+	public BoardVO read(int boardNo) {
+		
+		return sqlSession.selectOne(nameSpace + ".read", boardNo);
+	}
+	
+	@Override
+	public List<BoardVO> search(BoardVO vo) {
+		
+		
+		 
+		return sqlSession.selectList(nameSpace + ".search", vo);
+	}
 
 //	update
 	@Override
@@ -34,6 +48,16 @@ public class BoardDAOImpl implements BoardDAO {
 		 
 		sqlSession.update(nameSpace + ".update", vo);
 	}
+
+//	delete
+	@Override
+	public void delete(int boardNo) {
+		
+		sqlSession.delete(nameSpace + ".delete", boardNo);
+	}
+
+
+
 
 
 

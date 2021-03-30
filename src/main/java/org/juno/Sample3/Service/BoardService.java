@@ -12,8 +12,17 @@ public interface BoardService {
 //	select
 	List<BoardVO> list();
 
+	BoardVO read(int boardNo);
+	
+	List<BoardVO> search(BoardVO vo);
+	
 //	update
 	void update(BoardVO vo);
+
+//	delete
+	void delete(int boardNo);
+
+
 
 
 

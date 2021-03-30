@@ -26,13 +26,35 @@ public class BoardServiceImpl implements BoardService {
 		 
 		return dao.list();
 	}
-
+	
+	@Override
+	public BoardVO read(int boardNo) {
+		 
+		return dao.read(boardNo);
+	}
+	
+	@Override
+	public List<BoardVO> search(BoardVO vo) {
+		 
+		return dao.search(vo);
+	}
+	
 //	update
 	@Override
 	public void update(BoardVO vo) {
 		 
 		dao.update(vo);
 	}
+
+//	delete
+	@Override
+	public void delete(int boardNo) {
+		
+		dao.delete(boardNo);
+	}
+
+
+
 
 
 

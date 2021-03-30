@@ -16,10 +16,21 @@
 		SELECT * FROM tbl_board ORDER BY boardNo DESC
 	</select>
 	
+	<select id="read" resultType="org.juno.Sample3.Domain.BoardVO">
+		SELECT * FROM tbl_board where boardNo = #{boardNO}
+	</select>
+	
+	<select id="search" resultType="org.juno.Sample3.Domain.BoardVO">
+		SELECT * FROM tbl_board where name like '%'||#{name}||'%'
+	</select>
+	
 	<!-- Update -->
 	<update id="update">
 		update tbl_board set name = #{name}, pw = #{pw}, title = #{title}, content = #{content}, fileName = #{fileName} where boardNo = #{boardNo}
 	</update>
 
 	<!-- Delete -->
+	<delete id="delete">
+		delete from tbl_board where boardNo = #{boardNo}
+	</delete>
 </mapper>
