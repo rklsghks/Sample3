@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="console_root" target="SYSTEM_OUT">
+			<PatternLayout pattern="%level : %d [%c] %m%n %l%n" />
+		</Console>
+		<Console name="console_sqltiming" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d [%c]%n %m%n" />
+		</Console>
+		<Console name="console_resultsettable" target="SYSTEM_OUT">
+			<PatternLayout pattern="%m%n" />
+		</Console>
+		<Console name="console_com" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %5p [%c] %m%n" />
+		</Console>
+	</Appenders>
+
+
+	<Loggers>
+		
+		<Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+			<AppenderRef ref="console_sqltiming"/>
+		</Logger>
+		
+		<Logger name="jdbc.resultsettable" level="INFO" additivity="false">
+			<AppenderRef ref="console_resultsettable"/>
+		</Logger>
+		
+		<Logger name="org.springframework" level="WARN" additivity="false">
+			<AppenderRef ref="console_root"/>
+		</Logger>
+		
+		<Logger name="jdbc.sqlonly" level="WARN" additivity="false">
+			<AppenderRef ref="console_root"/>
+		</Logger>
+		
+		<Logger name="jdbc.connection" level="WARN" additivity="false">
+			<AppenderRef ref="console_root"/>
+		</Logger>
+		
+		<Logger name="jdbc.audit" level="WARN" additivity="false">
+			<AppenderRef ref="console_root"/>
+		</Logger>
+		
+		<Logger name="jdbc.resultset" level="WARN" additivity="false">
+			<AppenderRef ref="console_root"/>
+		</Logger>
+		
+		<Logger name="com.zaxxer.hikari.HikariDataSource" level="WARN" additivity="false">
+			<AppenderRef ref="console_root"/>
+		</Logger>
+		
+		
+		
+		<Root level="INFO">
+			<AppenderRef ref="console_root" />
+		</Root>
+		
+
+	</Loggers>
+</Configuration>
+ 

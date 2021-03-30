@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.juno.Sample3.Mappers.BoardMapper">
+
+	<!-- Insert -->
+	<insert id="insert">
+		INSERT INTO tbl_board (
+			boardNo, name, pw, title, content, fileName
+		) VALUES (
+			seq_board.NEXTVAL, #{name}, #{pw}, #{title}, #{content}, #{fileName}
+		)
+	</insert>
+
+	<!-- Select -->
+	<select id="list" resultType="org.juno.Sample3.Domain.BoardVO">
+		SELECT * FROM tbl_board ORDER BY boardNo DESC
+	</select>
+	
+	<!-- Update -->
+	<update id="update">
+		update tbl_board set name = #{name}, pw = #{pw}, title = #{title}, content = #{content}, fileName = #{fileName} where boardNo = #{boardNo}
+	</update>
+
+	<!-- Delete -->
+</mapper>
